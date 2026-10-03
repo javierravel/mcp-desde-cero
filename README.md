@@ -32,7 +32,7 @@ claude mcp add tareas -- node "$(pwd)/index.js"
 
 Después abrí Claude Code y pedile, por ejemplo: *"agregá tres tareas: comprar pan, llamar al banco y revisar el correo"*.
 
-Cada carpeta tiene su propio README con los detalles y la configuración para Claude Desktop.
+Cada carpeta tiene su propio README con los detalles y la configuración para Claude Desktop, y una prueba reproducible que corrés con `npm test`: revisa el contrato de la herramienta, la respuesta esperada y un error a propósito, y muestra la traza completa de mensajes.
 
 ## Un consejo importante
 

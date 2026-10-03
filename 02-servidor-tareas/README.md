@@ -37,6 +37,21 @@ Agregá esto a `claude_desktop_config.json` (en macOS: `~/Library/Application Su
 }
 ```
 
+## Prueba reproducible
+
+```bash
+npm test
+```
+
+`prueba.mjs` levanta el servidor, se conecta como un cliente MCP y revisa cuatro cosas:
+
+1. **Contrato:** que existan `agregar_tarea` y `listar_tareas`, y que `agregar_tarea` pida `texto` como string.
+2. **Respuesta esperada:** lista vacía, agregar "comprar pan" y verla en la lista.
+3. **Error a propósito:** mandar `texto: 42`. El SDK lo rechaza con el error `-32602` (validación de entrada) y la lista no cambia.
+4. **Traza completa:** imprime cada mensaje JSON-RPC que va (`->`) y vuelve (`<-`), así ves exactamente qué se dicen cliente y servidor.
+
+Tu `tareas.json` no se toca: la prueba lo guarda antes y lo restaura al final.
+
 ## Ideas para seguir
 
 - Una herramienta `completar_tarea` que marque `hecha: true`

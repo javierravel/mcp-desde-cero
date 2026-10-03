@@ -8,6 +8,14 @@ Código de la serie **MCP desde cero** del canal de YouTube [Javi Automates](htt
 | 2. [Tu primer servidor MCP](https://youtu.be/Ir0pmikTY0Q) | [`02-servidor-tareas`](02-servidor-tareas) | Lista de tareas en 29 líneas, guardada en un archivo JSON |
 | 3. [¿MCP o API?](https://youtu.be/hxq5HLcbQ2A) | [`03-servidor-clima`](03-servidor-clima) | Pronóstico del clima: un servidor MCP que envuelve la API de Open-Meteo |
 
+## Más videos del canal
+
+- Playlist [MCP desde cero](https://www.youtube.com/@javiautomates/playlists): los videos de esta serie, en orden.
+- Playlist **n8n + IA**: [instalar n8n en tu propio servidor](https://youtu.be/irb-SZOVJPM) y [conectar n8n con Claude usando MCP](https://youtu.be/ICQpoRzLUco).
+- Playlist **Claude + tus apps**: [conectar Gmail a Claude, sin código](https://youtu.be/gnQmeTm7Mvg).
+
+Algunos videos están programados y se publican en las próximas semanas: si un link todavía no abre, volvé en unos días o [suscribite al canal](https://www.youtube.com/@javiautomates?sub_confirmation=1).
+
 ## Requisitos
 
 - [Node.js](https://nodejs.org) 18 o más nuevo

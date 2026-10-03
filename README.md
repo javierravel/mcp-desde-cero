@@ -12,7 +12,7 @@ Código de la serie **MCP desde cero** del canal de YouTube [Javi Automates](htt
 
 - Playlist [MCP desde cero](https://www.youtube.com/@javiautomates/playlists): los videos de esta serie, en orden.
 - Playlist **n8n + IA**: [instalar n8n en tu propio servidor](https://youtu.be/irb-SZOVJPM) y [conectar n8n con Claude usando MCP](https://youtu.be/ICQpoRzLUco).
-- Playlist **Claude + tus apps**: [conectar Gmail a Claude, sin código](https://youtu.be/gnQmeTm7Mvg) y [conectar Google Calendar a Claude, sin código](https://youtu.be/o9NsdIDLtK8).
+- Playlist **Claude + tus apps**: [conectar Gmail a Claude, sin código](https://youtu.be/gnQmeTm7Mvg), [conectar Google Calendar a Claude, sin código](https://youtu.be/o9NsdIDLtK8) y [Claude analiza tus planillas de Google Drive](https://youtu.be/lAPyXn6Vqdc).
 
 Algunos videos están programados y se publican en las próximas semanas: si un link todavía no abre, volvé en unos días o [suscribite al canal](https://www.youtube.com/@javiautomates?sub_confirmation=1).
 

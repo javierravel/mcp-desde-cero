@@ -8,7 +8,7 @@ Un servidor MCP de 48 líneas que usa las **tres piezas** de MCP sobre una carpe
 | **Tool** | `crear_nota(nombre, texto)`: crea una nota | El modelo, y la app te pide aprobación |
 | **Prompt** | `resumir_nota(nombre)`: plantilla lista para usar | Vos, desde el menú de la app |
 
-📺 Video: se publica el 6 de noviembre en [Javi Automates](https://www.youtube.com/@javiautomates).
+📺 Video: https://youtu.be/utAclQMc3uw (se publica el 6 de noviembre)
 
 ## Permisos mínimos
 

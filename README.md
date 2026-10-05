@@ -7,6 +7,7 @@ Código de la serie **MCP desde cero** del canal de YouTube [Javi Automates](htt
 | 1. [MCP explicado en 5 minutos](https://youtu.be/FQCAvAwu1O8) | — | Qué es MCP, con un ejemplo real |
 | 2. [Tu primer servidor MCP](https://youtu.be/Ir0pmikTY0Q) | [`02-servidor-tareas`](02-servidor-tareas) | Lista de tareas en 29 líneas, guardada en un archivo JSON |
 | 3. [¿MCP o API?](https://youtu.be/hxq5HLcbQ2A) | [`03-servidor-clima`](03-servidor-clima) | Pronóstico del clima: un servidor MCP que envuelve la API de Open-Meteo |
+| 10. Resources, tools y prompts (6 de noviembre) | [`04-servidor-notas`](04-servidor-notas) | Notas en Markdown con las tres piezas de MCP y permisos mínimos |
 
 ## Más videos del canal
 

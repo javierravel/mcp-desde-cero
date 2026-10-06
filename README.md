@@ -17,6 +17,11 @@ Código de la serie **MCP desde cero** del canal de YouTube [Javi Automates](htt
 
 Algunos videos están programados y se publican en las próximas semanas: si un link todavía no abre, volvé en unos días o [suscribite al canal](https://www.youtube.com/@javiautomates?sub_confirmation=1).
 
+## Recursos del canal
+
+- 🎁 [Guía gratis en PDF: Tu primer servidor MCP en 15 minutos](https://javiautomates.gumroad.com/l/guia-mcp-gratis)
+- 🧰 [MCP Starter Kit](https://javiautomates.gumroad.com/l/mcp-starter-kit) (US$19): una plantilla lista para producción con herramientas, recursos y prompts, manejo de errores, guardado seguro y 6 pruebas de punta a punta. El código de este repo es y va a seguir siendo gratis.
+
 ## Requisitos
 
 - [Node.js](https://nodejs.org) 18 o más nuevo

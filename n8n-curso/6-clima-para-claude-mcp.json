@@ -1,0 +1,61 @@
+{
+  "updatedAt": "2026-10-02T04:48:20.712Z",
+  "createdAt": "2026-10-02T04:48:20.712Z",
+  "name": "Clima para Claude (MCP)",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "path": "clima"
+      },
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "m1"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Devuelve el pronóstico del clima de los próximos 3 días (temperatura máxima, mínima y probabilidad de lluvia) para unas coordenadas. Usa la latitud y longitud de la ciudad que pida el usuario.",
+        "url": "=https://api.open-meteo.com/v1/forecast?latitude={{ $fromAI('latitud', 'Latitud de la ciudad, en grados decimales', 'number') }}&longitude={{ $fromAI('longitud', 'Longitud de la ciudad, en grados decimales', 'number') }}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=3",
+        "options": {}
+      },
+      "name": "Pronostico del clima",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        220
+      ],
+      "id": "m2"
+    }
+  ],
+  "connections": {
+    "Pronostico del clima": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodeGroups": [],
+  "versionCounter": 1,
+  "sourceWorkflowId": null,
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

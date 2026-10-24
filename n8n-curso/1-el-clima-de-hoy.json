@@ -1,0 +1,92 @@
+{
+  "updatedAt": "2026-10-23T13:28:36.012Z",
+  "createdAt": "2026-10-22T07:29:15.289Z",
+  "name": "1 - El clima de hoy",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "name": "Todos los días a las 8",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "50a0f30c-10d4-4701-be24-84e9c59c06e4"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "-34.61"
+            },
+            {
+              "name": "longitude",
+              "value": "-58.38"
+            },
+            {
+              "name": "daily",
+              "value": "temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+            },
+            {
+              "name": "timezone",
+              "value": "America/Argentina/Buenos_Aires"
+            },
+            {
+              "name": "forecast_days",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Pedir el clima",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        0
+      ],
+      "id": "564c2fbf-f02c-45e5-a5c4-a1becc938a9d"
+    }
+  ],
+  "connections": {
+    "Todos los días a las 8": {
+      "main": [
+        [
+          {
+            "node": "Pedir el clima",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "versionCounter": 5,
+  "sourceWorkflowId": null,
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "updatedAt": "2026-10-22T08:06:33.132Z",
+  "createdAt": "2026-10-22T08:04:18.597Z",
+  "name": "3 - El clima en una tabla",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "name": "Todos los días a las 8",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d148ae9f-23d2-4156-8116-b404b667e875"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "-34.61"
+            },
+            {
+              "name": "longitude",
+              "value": "-58.38"
+            },
+            {
+              "name": "daily",
+              "value": "temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+            },
+            {
+              "name": "timezone",
+              "value": "America/Argentina/Buenos_Aires"
+            },
+            {
+              "name": "forecast_days",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Pedir el clima",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        0
+      ],
+      "id": "a3561f01-47b0-4735-9e0e-034a37ce0da9"
+    },
+    {
+      "parameters": {
+        "dataTableId": {"__rl": true, "mode": "list", "value": ""},
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha": "={{ $json.daily.time[0]  }}",
+            "maxima": "={{ $json.daily.temperature_2m_max[0]  }}",
+            "minima": "={{ $json.daily.temperature_2m_min[0]  }}",
+            "lluvia": "={{ $json.daily.precipitation_probability_max[0]  }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "fecha",
+              "displayName": "fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "maxima",
+              "displayName": "maxima",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "minima",
+              "displayName": "minima",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lluvia",
+              "displayName": "lluvia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        496,
+        0
+      ],
+      "id": "0c4227dc-75bf-4901-afd6-2a2b2268aba5",
+      "name": "Guardar en la tabla"
+    }
+  ],
+  "connections": {
+    "Todos los días a las 8": {
+      "main": [
+        [
+          {
+            "node": "Pedir el clima",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedir el clima": {
+      "main": [
+        [
+          {
+            "node": "Guardar en la tabla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "versionCounter": 7,
+  "sourceWorkflowId": null,
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

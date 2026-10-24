@@ -1,0 +1,154 @@
+{
+  "updatedAt": "2026-10-23T13:32:53.913Z",
+  "createdAt": "2026-10-23T13:29:44.014Z",
+  "name": "4 - Expresiones: el mensaje en un solo lugar",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "name": "Todos los días a las 8",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "474d1b12-e094-4235-a01c-64dc066c9f75"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "-34.61"
+            },
+            {
+              "name": "longitude",
+              "value": "-58.38"
+            },
+            {
+              "name": "daily",
+              "value": "temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+            },
+            {
+              "name": "timezone",
+              "value": "America/Argentina/Buenos_Aires"
+            },
+            {
+              "name": "forecast_days",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Pedir el clima",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        0
+      ],
+      "id": "e83cef68-d3bb-4b3c-b4ec-ae3454c0f250"
+    },
+    {
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "={{ $json.mensaje }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        0
+      ],
+      "id": "44af0209-40f9-404a-915e-ba44e071260e",
+      "name": "Avisarme por Telegram"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7152d608-9708-45f5-8aca-ac70b66a5858",
+              "name": "mensaje",
+              "value": "=Hoy en Buenos Aires: máxima {{ $json.daily.temperature_2m_max[0] }} °C · mínima {{ $json.daily.temperature_2m_min[0] }} °C · lluvia {{ $json.daily.precipitation_probability_max[0] }} %",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        496,
+        0
+      ],
+      "id": "1e3e0581-419c-4af7-ac95-5774a3b917bd",
+      "name": "Armar el mensaje"
+    }
+  ],
+  "connections": {
+    "Todos los días a las 8": {
+      "main": [
+        [
+          {
+            "node": "Pedir el clima",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedir el clima": {
+      "main": [
+        [
+          {
+            "node": "Armar el mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar el mensaje": {
+      "main": [
+        [
+          {
+            "node": "Avisarme por Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "versionCounter": 8,
+  "sourceWorkflowId": null,
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

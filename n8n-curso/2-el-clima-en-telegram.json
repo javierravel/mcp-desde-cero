@@ -1,0 +1,120 @@
+{
+  "updatedAt": "2026-10-22T15:04:14.331Z",
+  "createdAt": "2026-10-22T08:12:37.329Z",
+  "name": "2 - El clima en Telegram",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "name": "Todos los días a las 8",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d43e1aae-d640-42fa-806f-85e835b17366"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "-34.61"
+            },
+            {
+              "name": "longitude",
+              "value": "-58.38"
+            },
+            {
+              "name": "daily",
+              "value": "temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+            },
+            {
+              "name": "timezone",
+              "value": "America/Argentina/Buenos_Aires"
+            },
+            {
+              "name": "forecast_days",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Pedir el clima",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        0
+      ],
+      "id": "4d5a88bf-ea26-4e88-bcad-04598914f767"
+    },
+    {
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=El clima de hoy en Buenos Aires: máxima {{  $json.daily.temperature_2m_max[0] }} °C, mínima {{  $json.daily.temperature_2m_min[0] }} °C, lluvia {{  $json.daily.precipitation_probability_max[0] }} %",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        496,
+        0
+      ],
+      "id": "f11a8719-f3a6-44c7-8131-5836d06c189e",
+      "name": "Avisarme por Telegram"
+    }
+  ],
+  "connections": {
+    "Todos los días a las 8": {
+      "main": [
+        [
+          {
+            "node": "Pedir el clima",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedir el clima": {
+      "main": [
+        [
+          {
+            "node": "Avisarme por Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "versionCounter": 10,
+  "sourceWorkflowId": null,
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}
